@@ -42,11 +42,9 @@
         Dim comparisons As Integer = 0
         Dim count As Integer = nums.Length - 1
         Dim temp As Integer
-
         While 1 <> count
 
             For i = 1 To (count - 1)
-
                 If nums(i) > nums(i + 1) Then
                     temp = nums(i)
                     nums(i) = nums(i + 1)
@@ -56,9 +54,7 @@
                     Continue For
                 End If
                 comparisons += 1
-
             Next
-
             count -= 1
 
         End While
@@ -69,17 +65,35 @@
 
     Private Sub Btn_SelectSort_Click(sender As Object, e As EventArgs) Handles Btn_SelectSort.Click
 
-        Dim count As Integer = 1
+        Dim min_index As Integer = 1
         Dim temp As Integer
         Dim comparisons As Integer = 0
         Dim small As Integer
+        Dim small_index As Int16
 
-        While count <> (nums.Length - 1)
-            For i = count To nums.Length - 1
+        'Make a loop that loops over from Start to End, then next loop is from start + 1 to the end. 
+        'Make a negative loop.
+        '{
+        'Find the smallest value of that list, then swap it with the start value. 
+        '}
+        While min_index <= nums.Length - 1
+            small = 9999
+            For i = min_index To nums.Length - 1
+                If nums(i) < small Then
 
+                    small = nums(i)
+                    small_index = i
+                End If
+                comparisons += 1
             Next
+
+            temp = nums(min_index)
+            nums(min_index) = nums(small_index)
+            nums(small_index) = temp
+            min_index += 1
+
         End While
-
-
+        Display()
+        LstBx.Items.Add("Comparisons: " + Convert.ToString(comparisons))
     End Sub
 End Class
