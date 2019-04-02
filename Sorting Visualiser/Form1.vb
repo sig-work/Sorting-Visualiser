@@ -42,20 +42,22 @@
         Dim comparisons As Integer = 0
         Dim count As Integer = nums.Length - 1
         Dim temp As Integer
+        Dim flag As Boolean = True
 
-        While 1 <> count
-
+        While 1 <> count And flag = True
+            flag = False
             For i = 1 To (count - 1)
 
                 If nums(i) > nums(i + 1) Then
                     temp = nums(i)
                     nums(i) = nums(i + 1)
                     nums(i + 1) = temp
-
+                    flag = True
                 Else
-                    Continue For
+                    comparisons += 1
+
                 End If
-                comparisons += 1
+
 
             Next
 
